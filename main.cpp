@@ -83,7 +83,7 @@ int main()
           switch (choice)
           {
           case 1:
-            printf("\nYour current balance is Rs.%.2f", usr.balance);
+            printf("\nYour current balance is Rub.%.2f", usr.balance);
             break;
           case 2:
             printf("\nEnter the amout:\t");
@@ -95,6 +95,17 @@ int main()
               printf("Succesfully deposited.");
             fclose(fp);
             break;
+          case 3:
+            printf("\nEnter the amout:\t");
+            scanf("%f", &amount);
+            usr.balance -= amount;
+            fp = fopen(filename, "w");
+            fwrite(&usr, sizeof(struct user), 1, fp);
+            if (fwrite != NULL)
+              printf("You have withdrawn Rub.%.2f", amount);
+            fclose(fp);
+            break;
+          case 4:
                     }
 
           printf("\nDo you want to continue the transaction [y/n]\t");
