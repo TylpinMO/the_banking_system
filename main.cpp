@@ -17,6 +17,7 @@ int main()
   char filename[50], phone[50], pword[50];
   int opt, choice;
   char cont = 'y';
+  float amount;
 
   printf("\n What do you want to do?");
   printf("\n\n1. Register an account");
@@ -83,7 +84,18 @@ int main()
           {
           case 1:
             printf("\nYour current balance is Rs.%.2f", usr.balance);
-          }
+            break;
+          case 2:
+            printf("\nEnter the amout:\t");
+            scanf("%f", &amount);
+            usr.balance += amount;
+            fp = fopen(filename, "w");
+            fwrite(&usr, sizeof(struct user), 1, fp);
+            if (fwrite != NULL)
+              printf("Succesfully deposited.");
+            fclose(fp);
+            break;
+                    }
 
           printf("\nDo you want to continue the transaction [y/n]\t");
           scanf("%s", &cont);
